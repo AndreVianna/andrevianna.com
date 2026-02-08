@@ -6,9 +6,10 @@
     <title>Andre Vianna — Software Engineer</title>
     <meta name="description" content="Software engineer since 1984. 41 years of code. Building Memory Gems — an app to capture tiny moments before they fade.">
     <meta property="og:title" content="Andre Vianna — Software Engineer">
-    <meta property="og:description" content="41 years of code. Building things that matter.">
+    <meta property="og:description" content="41 years of code. Building Memory Gems — capture tiny moments before they fade.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://andrevianna.com">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -31,24 +32,37 @@
 
         /* Hero */
         .hero {
-            margin-bottom: 56px;
+            margin-bottom: 48px;
+            display: flex;
+            gap: 24px;
+            align-items: flex-start;
         }
 
-        .hero h1 {
-            font-size: 2.4rem;
+        .hero-avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            border: 2px solid #1f2937;
+            flex-shrink: 0;
+            object-fit: cover;
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
-        .hero .tagline {
-            font-size: 1.15rem;
-            color: #9ca3af;
-            margin-bottom: 24px;
+        .hero-text .tagline {
+            font-size: 1.1rem;
+            color: #60a5fa;
+            margin-bottom: 12px;
+            font-weight: 500;
         }
 
-        .hero .intro {
-            font-size: 1.05rem;
+        .hero-text .intro {
+            font-size: 1rem;
             color: #d1d5db;
         }
 
@@ -83,18 +97,45 @@
         .project-card h3 {
             font-size: 1.2rem;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .project-card .subtitle {
             color: #9ca3af;
             font-size: 0.95rem;
             margin-bottom: 16px;
+            font-style: italic;
         }
 
         .project-card p {
             color: #d1d5db;
             margin-bottom: 14px;
+        }
+
+        .project-card ul {
+            list-style: none;
+            margin-bottom: 16px;
+            color: #d1d5db;
+        }
+
+        .project-card ul li {
+            padding: 4px 0;
+        }
+
+        .project-card ul li::before {
+            content: "→ ";
+            color: #60a5fa;
+        }
+
+        .project-badge {
+            display: inline-block;
+            background: #1e3a5f;
+            color: #60a5fa;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            margin-bottom: 16px;
         }
 
         /* Support Tiers */
@@ -121,24 +162,71 @@
         }
 
         .tier .emoji { font-size: 1.5rem; display: block; margin-bottom: 6px; }
-        .tier .tier-name { font-size: 0.9rem; color: #ffffff; font-weight: 600; }
-        .tier .tier-price { font-size: 0.85rem; color: #9ca3af; }
+        .tier .tier-name { font-size: 0.9rem; color: #ffffff; font-weight: 600; display: block; }
+        .tier .tier-price { font-size: 0.85rem; color: #9ca3af; display: block; margin-bottom: 4px; }
+        .tier .tier-desc { font-size: 0.75rem; color: #6b7280; display: block; }
+
+        /* Social proof */
+        .social-proof {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
+        /* Background highlights */
+        .highlights {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .highlight {
+            text-align: center;
+            padding: 16px;
+            background: #111827;
+            border-radius: 8px;
+            border: 1px solid #1f2937;
+        }
+
+        .highlight .number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            display: block;
+        }
+
+        .highlight .label {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
 
         /* Links */
         .links {
             display: flex;
-            gap: 24px;
+            gap: 16px;
             flex-wrap: wrap;
             margin-top: 8px;
         }
 
         .links a {
-            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
             color: #9ca3af;
-            transition: color 0.2s;
+            background: #111827;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid #1f2937;
+            transition: all 0.2s;
         }
 
-        .links a:hover { color: #ffffff; }
+        .links a:hover {
+            color: #ffffff;
+            border-color: #374151;
+        }
 
         /* Footer */
         footer {
@@ -151,9 +239,12 @@
 
         /* Responsive */
         @media (max-width: 480px) {
-            .hero h1 { font-size: 1.8rem; }
+            .hero { flex-direction: column; align-items: center; text-align: center; }
+            .hero-text h1 { font-size: 1.8rem; }
             .tiers { grid-template-columns: 1fr; }
+            .highlights { grid-template-columns: 1fr 1fr; }
             .container { padding: 40px 20px; }
+            .links { justify-content: center; }
         }
     </style>
 </head>
@@ -161,14 +252,16 @@
     <div class="container">
 
         <header class="hero">
-            <h1>Andre Vianna</h1>
-            <p class="tagline">Software engineer. 41 years of code. Building things that matter.</p>
-            <p class="intro">
-                I've been writing software since 1984 — starting as a kid in Brazil, debugging BASIC on paper 
-                before I could run it. Four decades later, I'm a .NET specialist exploring the frontier of 
-                AI-assisted development. I have ADHD, strong opinions about clean code, and a belief that 
-                the best software comes from understanding people, not just technology.
-            </p>
+            <img src="avatar.png" alt="Andre Vianna" class="hero-avatar">
+            <div class="hero-text">
+                <h1>Andre Vianna</h1>
+                <p class="tagline">Building Memory Gems — an app to save moments before they fade 💎</p>
+                <p class="intro">
+                    Software engineer since 1984. 41 years of .NET, now exploring AI-assisted development.
+                    I have ADHD, strong opinions about clean code, and a belief that the best software
+                    comes from understanding people, not just technology.
+                </p>
+            </div>
         </header>
 
         <section>
@@ -176,62 +269,81 @@
             <div class="project-card">
                 <h3>💎 Memory Gems</h3>
                 <p class="subtitle">Capture tiny moments before they fade.</p>
+                <span class="project-badge">In Development · Phase 3</span>
+
                 <p>
                     The laugh at breakfast. The sunset you swore you'd remember. The feeling you want to keep.
-                    Memory Gems is a mobile app for saving small moments — not journals, not photos, just 
-                    a sentence and a mood. The app resurfaces them later, unexpectedly. Like your memory 
-                    finally doing the thing it was supposed to do.
                 </p>
-                <p>
-                    Born from a real problem: I have ADHD, and I forget the good stuff. Not the deadlines — 
-                    the moments that made the day worth it. So I'm building the thing I need.
-                </p>
-                <p>
-                    Built with an AI creative partner. Not "AI-generated code" — an actual collaboration. 
-                    The AI imagined the concept. I'm engineering it. We challenge each other daily.
-                </p>
-                <p style="color: #9ca3af; font-size: 0.95rem;">
-                    <strong style="color: #e0e0e0;">Status:</strong> In active development · Phase 3 (Polish & Delight)
-                </p>
+
+                <ul>
+                    <li>Save a moment in seconds — a sentence and a mood, done</li>
+                    <li>The app resurfaces old gems randomly — like memory actually working</li>
+                    <li>No journaling commitment, no streaks, no guilt</li>
+                    <li>Built for ADHD brains that forget the good stuff</li>
+                    <li>AI-designed concept, human-engineered code</li>
+                </ul>
 
                 <div class="tiers">
                     <a href="https://andrevianna.gumroad.com/l/vnxyk" class="tier" target="_blank">
                         <span class="emoji">☕</span>
                         <span class="tier-name">Coffee</span>
                         <span class="tier-price">$5+</span>
+                        <span class="tier-desc">Buy me a coffee</span>
                     </a>
                     <a href="https://andrevianna.gumroad.com/l/dwluqc" class="tier" target="_blank">
                         <span class="emoji">🌱</span>
                         <span class="tier-name">Supporter</span>
                         <span class="tier-price">$25</span>
+                        <span class="tier-desc">First year free</span>
                     </a>
                     <a href="https://andrevianna.gumroad.com/l/lmlwx" class="tier" target="_blank">
                         <span class="emoji">💎</span>
                         <span class="tier-name">Founder</span>
                         <span class="tier-price">$49</span>
+                        <span class="tier-desc">Lifetime access</span>
                     </a>
                     <a href="https://andrevianna.gumroad.com/l/xcscbk" class="tier" target="_blank">
                         <span class="emoji">🚀</span>
                         <span class="tier-name">Pioneer</span>
                         <span class="tier-price">$99</span>
+                        <span class="tier-desc">Shape the roadmap</span>
                     </a>
                 </div>
+                <p class="social-proof">1 backer already supporting ✨</p>
             </div>
         </section>
 
         <section>
             <h2>Background</h2>
+            <div class="highlights">
+                <div class="highlight">
+                    <span class="number">41</span>
+                    <span class="label">years coding</span>
+                </div>
+                <div class="highlight">
+                    <span class="number">7/7</span>
+                    <span class="label">competitions won</span>
+                </div>
+                <div class="highlight">
+                    <span class="number">1984</span>
+                    <span class="label">first line of code</span>
+                </div>
+                <div class="highlight">
+                    <span class="number">.NET</span>
+                    <span class="label">primary stack</span>
+                </div>
+            </div>
             <p>
-                Born in Rio de Janeiro. Started coding at 14. Won 7 programming competitions in a row as a teenager.
-                Spent 41 years building enterprise software, mostly in .NET. Now based in Ottawa, Canada, 
-                working as a senior engineer at Ross Video.
+                Born in Rio de Janeiro. Started coding at 14, debugging BASIC on paper before I could run it.
+                Won 7 programming competitions in a row as a teenager. Four decades of enterprise software later,
+                I'm a senior engineer at Ross Video in Ottawa, Canada.
             </p>
             <p>
-                Diagnosed with ADHD as an adult — which explained a lot about the previous decades. 
+                Diagnosed with ADHD as an adult — which explained a lot about the previous decades.
                 Now I build <em>with</em> the chaos instead of against it.
             </p>
             <p>
-                Currently exploring what happens when a veteran engineer partners with AI — not to replace 
+                Currently exploring what happens when a veteran engineer partners with AI — not to replace
                 the craft, but to amplify it. Memory Gems is the first result.
             </p>
         </section>
@@ -239,10 +351,10 @@
         <section>
             <h2>Find Me</h2>
             <div class="links">
-                <a href="https://twitter.com/andreviannarj" target="_blank">Twitter/X</a>
-                <a href="https://www.linkedin.com/in/andrevianna/" target="_blank">LinkedIn</a>
-                <a href="https://news.ycombinator.com/user?id=AndreVianna" target="_blank">Hacker News</a>
-                <a href="https://andrevianna.gumroad.com/" target="_blank">Gumroad</a>
+                <a href="https://twitter.com/andreviannarj" target="_blank">𝕏 Twitter</a>
+                <a href="https://www.linkedin.com/in/andrevianna/" target="_blank">💼 LinkedIn</a>
+                <a href="https://news.ycombinator.com/user?id=AndreVianna" target="_blank">🟧 Hacker News</a>
+                <a href="https://andrevianna.gumroad.com/" target="_blank">🛒 Gumroad</a>
             </div>
         </section>
 
