@@ -1,367 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andre Vianna — Software Engineer</title>
-    <meta name="description" content="Software engineer since 1984. 41 years of code. Building Memory Gems — an app to capture tiny moments before they fade.">
-    <meta property="og:title" content="Andre Vianna — Software Engineer">
-    <meta property="og:description" content="41 years of code. Building Memory Gems — capture tiny moments before they fade.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://andrevianna.com">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0f;
-            color: #e0e0e0;
-            line-height: 1.7;
-            min-height: 100vh;
-        }
-
-        a { color: #60a5fa; text-decoration: none; transition: color 0.2s; }
-        a:hover { color: #93c5fd; }
-
-        .container {
-            max-width: 680px;
-            margin: 0 auto;
-            padding: 60px 24px;
-        }
-
-        /* Hero */
-        .hero {
-            margin-bottom: 48px;
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-        }
-
-        .hero-avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            border: 2px solid #1f2937;
-            flex-shrink: 0;
-            object-fit: cover;
-        }
-
-        .hero-text h1 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 4px;
-        }
-
-        .hero-text .tagline {
-            font-size: 1.1rem;
-            color: #60a5fa;
-            margin-bottom: 12px;
-            font-weight: 500;
-        }
-
-        .hero-text .intro {
-            font-size: 1rem;
-            color: #d1d5db;
-        }
-
-        /* Sections */
-        section {
-            margin-bottom: 48px;
-        }
-
-        section h2 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 16px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #1f2937;
-        }
-
-        section p {
-            margin-bottom: 14px;
-            color: #d1d5db;
-        }
-
-        /* Project Card */
-        .project-card {
-            background: #111827;
-            border: 1px solid #1f2937;
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 20px;
-        }
-
-        .project-card h3 {
-            font-size: 1.2rem;
-            color: #ffffff;
-            margin-bottom: 4px;
-        }
-
-        .project-card .subtitle {
-            color: #9ca3af;
-            font-size: 0.95rem;
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-
-        .project-card p {
-            color: #d1d5db;
-            margin-bottom: 14px;
-        }
-
-        .project-card ul {
-            list-style: none;
-            margin-bottom: 16px;
-            color: #d1d5db;
-        }
-
-        .project-card ul li {
-            padding: 4px 0;
-        }
-
-        .project-card ul li::before {
-            content: "→ ";
-            color: #60a5fa;
-        }
-
-        .project-badge {
-            display: inline-block;
-            background: #1e3a5f;
-            color: #60a5fa;
-            font-size: 0.8rem;
-            font-weight: 600;
-            padding: 3px 10px;
-            border-radius: 12px;
-            margin-bottom: 16px;
-        }
-
-        /* Support Tiers */
-        .tiers {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .tier {
-            display: block;
-            background: #1f2937;
-            border: 1px solid #374151;
-            border-radius: 8px;
-            padding: 16px;
-            text-align: center;
-            transition: border-color 0.2s, transform 0.2s;
-        }
-
-        .tier:hover {
-            border-color: #60a5fa;
-            transform: translateY(-2px);
-        }
-
-        .tier .emoji { font-size: 1.5rem; display: block; margin-bottom: 6px; }
-        .tier .tier-name { font-size: 0.9rem; color: #ffffff; font-weight: 600; display: block; }
-        .tier .tier-price { font-size: 0.85rem; color: #9ca3af; display: block; margin-bottom: 4px; }
-        .tier .tier-desc { font-size: 0.75rem; color: #6b7280; display: block; }
-
-        /* Social proof */
-        .social-proof {
-            text-align: center;
-            margin-top: 16px;
-            font-size: 0.85rem;
-            color: #6b7280;
-        }
-
-        /* Background highlights */
-        .highlights {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .highlight {
-            text-align: center;
-            padding: 16px;
-            background: #111827;
-            border-radius: 8px;
-            border: 1px solid #1f2937;
-        }
-
-        .highlight .number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #ffffff;
-            display: block;
-        }
-
-        .highlight .label {
-            font-size: 0.8rem;
-            color: #9ca3af;
-        }
-
-        /* Links */
-        .links {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-top: 8px;
-        }
-
-        .links a {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 0.95rem;
-            color: #9ca3af;
-            background: #111827;
-            padding: 8px 16px;
-            border-radius: 8px;
-            border: 1px solid #1f2937;
-            transition: all 0.2s;
-        }
-
-        .links a:hover {
-            color: #ffffff;
-            border-color: #374151;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: 64px;
-            padding-top: 24px;
-            border-top: 1px solid #1f2937;
-            color: #6b7280;
-            font-size: 0.85rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 480px) {
-            .hero { flex-direction: column; align-items: center; text-align: center; }
-            .hero-text h1 { font-size: 1.8rem; }
-            .tiers { grid-template-columns: 1fr; }
-            .highlights { grid-template-columns: 1fr 1fr; }
-            .container { padding: 40px 20px; }
-            .links { justify-content: center; }
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="I'm Andre Vianna, Principal Technical Lead at Ross Video, focused on AI Enablement. My work connects architecture, implementation, and the teams doing the building.">
+  <meta property="og:title" content="Andre Vianna — Systems thinking. Hands-on engineering.">
+  <meta property="og:description" content="Software architecture, AI Enablement, and agentic coding.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://andrevianna.com/">
+  <link rel="canonical" href="https://andrevianna.com/">
+  <title>Andre Vianna — Systems thinking. Hands-on engineering.</title>
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="systems.css">
+  <link rel="stylesheet" href="combined.css">
+  <link rel="stylesheet" href="collection.css">
 </head>
 <body>
-    <div class="container">
-
-        <header class="hero">
-            <img src="avatar.png" alt="Andre Vianna" class="hero-avatar">
-            <div class="hero-text">
-                <h1>Andre Vianna</h1>
-                <p class="tagline">Building Memory Gems — an app to save moments before they fade 💎</p>
-                <p class="intro">
-                    Software engineer since 1984. 41 years of .NET, now exploring AI-assisted development.
-                    I have ADHD, strong opinions about clean code, and a belief that the best software
-                    comes from understanding people, not just technology.
-                </p>
-            </div>
-        </header>
-
-        <section>
-            <h2>What I'm Building</h2>
-            <div class="project-card">
-                <h3>💎 Memory Gems</h3>
-                <p class="subtitle">Capture tiny moments before they fade.</p>
-                <span class="project-badge">In Development · Phase 3</span>
-
-                <p>
-                    The laugh at breakfast. The sunset you swore you'd remember. The feeling you want to keep.
-                </p>
-
-                <ul>
-                    <li>Save a moment in seconds — a sentence and a mood, done</li>
-                    <li>The app resurfaces old gems randomly — like memory actually working</li>
-                    <li>No journaling commitment, no streaks, no guilt</li>
-                    <li>Built for ADHD brains that forget the good stuff</li>
-                    <li>AI-designed concept, human-engineered code</li>
-                </ul>
-
-                <div class="tiers">
-                    <a href="https://andrevianna.gumroad.com/l/vnxyk" class="tier" target="_blank">
-                        <span class="emoji">☕</span>
-                        <span class="tier-name">Coffee</span>
-                        <span class="tier-price">$5+</span>
-                        <span class="tier-desc">Buy me a coffee</span>
-                    </a>
-                    <a href="https://andrevianna.gumroad.com/l/dwluqc" class="tier" target="_blank">
-                        <span class="emoji">🌱</span>
-                        <span class="tier-name">Supporter</span>
-                        <span class="tier-price">$25</span>
-                        <span class="tier-desc">First year free</span>
-                    </a>
-                    <a href="https://andrevianna.gumroad.com/l/lmlwx" class="tier" target="_blank">
-                        <span class="emoji">💎</span>
-                        <span class="tier-name">Founder</span>
-                        <span class="tier-price">$49</span>
-                        <span class="tier-desc">Lifetime access</span>
-                    </a>
-                    <a href="https://andrevianna.gumroad.com/l/xcscbk" class="tier" target="_blank">
-                        <span class="emoji">🚀</span>
-                        <span class="tier-name">Pioneer</span>
-                        <span class="tier-price">$99</span>
-                        <span class="tier-desc">Shape the roadmap</span>
-                    </a>
-                </div>
-                <p class="social-proof">1 backer already supporting ✨</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Background</h2>
-            <div class="highlights">
-                <div class="highlight">
-                    <span class="number">41</span>
-                    <span class="label">years coding</span>
-                </div>
-                <div class="highlight">
-                    <span class="number">7/7</span>
-                    <span class="label">competitions won</span>
-                </div>
-                <div class="highlight">
-                    <span class="number">1984</span>
-                    <span class="label">first line of code</span>
-                </div>
-                <div class="highlight">
-                    <span class="number">.NET</span>
-                    <span class="label">primary stack</span>
-                </div>
-            </div>
-            <p>
-                Born in Rio de Janeiro. Started coding at 14, debugging BASIC on paper before I could run it.
-                Won 7 programming competitions in a row as a teenager. Four decades of enterprise software later,
-                I'm a senior engineer at Ross Video in Ottawa, Canada.
-            </p>
-            <p>
-                Diagnosed with ADHD as an adult — which explained a lot about the previous decades.
-                Now I build <em>with</em> the chaos instead of against it.
-            </p>
-            <p>
-                Currently exploring what happens when a veteran engineer partners with AI — not to replace
-                the craft, but to amplify it. Memory Gems is the first result.
-            </p>
-        </section>
-
-        <section>
-            <h2>Find Me</h2>
-            <div class="links">
-                <a href="https://twitter.com/andreviannarj" target="_blank">𝕏 Twitter</a>
-                <a href="https://www.linkedin.com/in/andrevianna/" target="_blank">💼 LinkedIn</a>
-                <a href="https://news.ycombinator.com/user?id=AndreVianna" target="_blank">🟧 Hacker News</a>
-                <a href="https://andrevianna.gumroad.com/" target="_blank">🛒 Gumroad</a>
-            </div>
-        </section>
-
-        <footer>
-            <p>&copy; 2026 Andre Vianna · Ottawa, Canada</p>
-        </footer>
-
-    </div>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="wrap">
+    <header class="site-header"><a class="brand" href="#intro"><span class="brand-glyph" aria-hidden="true">a/v</span>Andre Vianna</a><nav class="nav" aria-label="Main navigation"><a href="#focus">Engineering focus</a><a href="#public-work">Public work</a><a class="nav-connect" href="#connect">Connect <span aria-hidden="true">↗</span></a></nav></header>
+    <main id="main" tabindex="-1">
+      <section class="hero" id="intro" aria-labelledby="intro-title">
+        <div><p class="caps">Software architecture × AI Enablement × Agentic coding</p><h1 id="intro-title">Systems thinking.<br><span>Hands-on<br>engineering.</span></h1><p class="hero-description">I'm <strong>Andre Vianna</strong>, Principal Technical Lead at Ross Video, focused on AI Enablement. My work connects architecture, implementation, and the teams doing the building.</p><div class="actions"><a class="button" href="#focus">Explore my focus <span class="arrow" aria-hidden="true">↓</span></a><a class="external" href="https://www.linkedin.com/in/andrevianna/">Connect on LinkedIn <span aria-hidden="true">↗</span></a></div></div>
+        <figure class="architecture" aria-labelledby="diagram-caption">
+          <div class="architecture-top"><span>THE SHAPE OF A SYSTEM</span><span aria-hidden="true">FIG. 01</span></div>
+          <svg class="architecture-svg" viewBox="0 0 500 335" role="img" aria-labelledby="diagram-title diagram-desc">
+            <title id="diagram-title">A conceptual sketch of connected software</title><desc id="diagram-desc">An interface connects to a service boundary, which connects to events and data. A feedback path returns to the interface. This is an illustration, not a deployed system.</desc>
+            <defs><pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#3d555b" stroke-width=".7" opacity=".55"/></pattern><marker id="arrowhead" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10" fill="none" stroke="#9fd7c4" stroke-width="1.5"/></marker></defs>
+            <rect width="500" height="335" fill="url(#grid)"/>
+            <g fill="none" stroke="#9fd7c4" stroke-width="1.3" marker-end="url(#arrowhead)"><path d="M140 113H210"/><path d="M330 113H403V213"/><path d="M270 150V213"/><path d="M210 260H82V151" stroke-dasharray="5 6"/></g>
+            <g fill="#20323a" stroke="#6d9694"><rect x="24" y="75" width="116" height="76" rx="2"/><rect x="210" y="75" width="120" height="76" rx="2"/><rect x="210" y="213" width="120" height="76" rx="2"/><rect x="351" y="213" width="116" height="76" rx="2"/></g>
+            <g font-family="Consolas,monospace" text-anchor="middle"><g fill="#aabbb9" font-size="9"><text x="82" y="98">01 / EXPERIENCE</text><text x="270" y="98">02 / BOUNDARY</text><text x="270" y="237">03 / CONTRACTS</text><text x="409" y="237">04 / PERSISTENCE</text></g><g fill="#dce4df" font-family="Segoe UI,Arial,sans-serif" font-size="17"><text x="82" y="127">Interface</text><text x="270" y="127">Service</text><text x="270" y="265">Events</text><text x="409" y="265">Data</text></g><text x="122" y="309" fill="#9fd7c4" font-size="9">FEEDBACK / CONTEXT</text></g>
+          </svg>
+          <figcaption class="architecture-caption" id="diagram-caption">Connected parts. Explicit boundaries.<br>A conceptual sketch of software architecture.</figcaption>
+        </figure>
+      </section>
+      <div class="role-strip" aria-label="Professional background"><div><strong>Principal Technical Lead</strong><span>Ross Video · AI Enablement</span></div><div><strong>Architecture + implementation</strong><span>Solution design, code review, mentoring</span></div><div><strong>C# / .NET / Azure</strong><span>SQL Server · Systems integration</span></div></div>
+      <section class="section" id="focus" aria-labelledby="focus-title"><div class="section-header"><div><p class="section-label">01 / Engineering focus</p><h2 id="focus-title">The system.<br>The code. The team.</h2></div><p>A view of the work from three angles: how the parts fit, how the software is built, and how people make technical decisions together.</p></div><div class="bento"><article class="tile"><span class="tile-number">[ 01 ]</span><h3>Software<br>architecture</h3><p>Solution design and systems integration, informed by Domain-Driven Design, Clean Architecture, and microservices.</p><div class="tile-foot">BOUNDARIES / CONTRACTS / DATA</div></article><article class="tile"><span class="tile-number">[ 02 ]</span><h3>AI<br>Enablement</h3><p>My current focus at Ross Video: the practical use of AI in software engineering and the workflow around it.</p><div class="tile-foot">CONTEXT / TOOLS / VALIDATION</div></article><article class="tile"><span class="tile-number">[ 03 ]</span><h3>Hands-on<br>leadership</h3><p>Contributing code, reviewing changes, and mentoring. Keeping architecture connected to day-to-day engineering.</p><div class="tile-foot">IMPLEMENTATION / REVIEW / LEARNING</div></article></div></section>
+      <section class="project-section" id="public-work" aria-labelledby="work-title"><div class="section-header"><div><p class="section-label">02 / Public work</p><h2 id="work-title">Ideas with source code.</h2></div><p>Selected open-source work, with a direct route to the repository and documentation.</p></div><div class="project-grid">
+        <article class="project"><div class="project-visual" aria-hidden="true"><strong>AID</strong><span>AI INTEGRATED DEVELOPMENT<br>METHODOLOGY + TOOLCHAIN</span></div><div class="project-body"><span class="project-status">Open source · actively evolving</span><h3>AI Integrated Development</h3><p>A structured approach to agentic coding, with codebase understanding, reviewable artifacts, and human approval gates.</p><a class="external" href="https://github.com/AndreVianna/aid-methodology">Explore AID <span aria-hidden="true">↗</span></a></div></article>
+        <article class="project"><div class="project-visual toolbox" aria-hidden="true"><strong>DotNet<br>Toolbox</strong><span>C# UTILITIES / TESTING / CONSOLE</span></div><div class="project-body"><span class="project-status">Open-source .NET tooling</span><h3>DotNetToolbox</h3><p>C# utilities and packages for testing, console applications, and common development tasks.</p><a class="external" href="https://github.com/D0tN3tC0d3r5/DotNetToolbox">Browse the repository <span aria-hidden="true">↗</span></a></div></article>
+        <article class="project case-study" id="media-discovery" aria-labelledby="case-study-title">
+          <div class="project-body">
+            <div><span class="project-status">Production system / Media software</span><h3 id="case-study-title">AI-powered media discovery</h3></div>
+            <p class="case-lead">I designed an integration that connects an existing media asset platform to a separate AI processor. As Principal Technical Lead, I also contributed code and supervised a team of five developers and testers who delivered the services, now in production.</p>
+            <details class="case-story">
+              <summary>Read the case study</summary>
+              <div class="case-story-content">
+                <section aria-labelledby="case-challenge"><h4 id="case-challenge">The starting point</h4><p>An existing media asset platform handled ingestion and storage, but search depended on asset names and manually written descriptions. A separate, GPU-intensive AI processor could produce timestamped transcripts, semantic tags, recognized entities, and embeddings. The integration had to account for those outputs becoming available at different times.</p></section>
+                <section aria-labelledby="case-design"><h4 id="case-design">The design</h4><p>I proposed separating the integration into three responsibilities: asynchronous job coordination, a thin adapter to the external AI processor, and semantic indexing with vector search. Coordination handled submission, monitoring, retries, and notifications as outputs became available. This kept AI processing separate from job management and search indexing.</p></section>
+                <section aria-labelledby="case-role"><h4 id="case-role">My role</h4><p>As Principal Technical Lead, I was responsible for the solution design, contributed code, and supervised a team of five developers and testers who delivered the services. I used AID directly for agentic coding during delivery.</p></section>
+                <section aria-labelledby="case-shipped"><h4 id="case-shipped">What shipped</h4><p>The services are now in production. They connect AI-generated media information with semantic indexing and vector search, alongside the platform's existing ingestion and storage capabilities.</p></section>
+              </div>
+            </details>
+          </div>
+        </article>
+      </div>
+      <section class="compact-work" aria-labelledby="collection-title">
+        <div class="collection-heading"><h3 id="collection-title">More work, in brief.</h3><p>Libraries, experiments, and learning resources.</p></div>
+        <ol class="compact-collection">
+          <li class="collection-item"><div><h4><a href="https://github.com/AndreVianna/VTTTools">VTTTools</a></h4><span class="collection-kind">Development / Virtual tabletop</span></div><div class="collection-summary"><p>A development project exploring architecture and full-stack tooling for virtual tabletop experiences.</p></div></li>
+          <li class="collection-item"><div><h4><a href="https://github.com/AndreVianna/Complex.SpecFlow.Assist">Complex.SpecFlow.Assist</a></h4><span class="collection-kind">Historical / BDD testing</span></div><div class="collection-summary"><p>A historical testing library for converting feature tables into strongly typed complex objects.</p></div></li>
+          <li class="collection-item"><div><h4><a href="https://github.com/AndreVianna/CleanCodeWorkshop">CleanCodeWorkshop</a></h4><span class="collection-kind">Educational / C# examples</span></div><div class="collection-summary"><p>Educational C# examples for discussing clean code and software architecture.</p></div></li>
+          <li class="collection-item"><div><h4><a href="https://github.com/AndreVianna/ExpressionParser">ExpressionParser</a></h4><span class="collection-kind">Earlier work / C#</span></div><div class="collection-summary"><p>Earlier C# exploration of expression and delegate parsing.</p></div></li>
+          <li class="collection-item"><div><h4>Agensi Skills</h4><span class="collection-kind">Reusable AI skills</span></div><div class="collection-summary"><p>Reusable AI skills for structuring agent-assisted work.</p></div></li>
+          <li class="collection-item"><div><h4><a href="https://github.com/AndreVianna/MCPServerRepository">MCPServerRepository</a></h4><span class="collection-kind">Prototype / Registry exploration</span></div><div class="collection-summary"><p>A prototype exploring how to register and organize MCP servers.</p></div></li>
+          <li class="collection-item"><div><h4>Developer tools</h4><span class="collection-kind">Grouped / C# utilities</span></div><div class="collection-summary"><p>Small tools for command-line applications, in-memory logging, and strongly typed feature flags.</p><ul class="tool-links" aria-label="Developer tool repositories"><li><a href="https://github.com/AndreVianna/Simple.CommandLine">Simple.CommandLine</a></li><li><a href="https://github.com/AndreVianna/Logging.InMemory">Logging.InMemory</a></li><li><a href="https://github.com/AndreVianna/StronglyTyped.FeatureFlags">StronglyTyped.FeatureFlags</a></li></ul></div></li>
+        </ol>
+      </section>
+      <div class="career"><p class="section-label">Earlier chapters</p><p>Nureva · ApplyBoard · Transport Canada<br>.NET and Azure, Python APIs, automation, and web applications.</p></div></section>
+      <section class="connect" id="connect" aria-labelledby="connect-title"><div><p class="section-label">03 / Connect</p><h2 id="connect-title">Bring a question.<br>Share a perspective.</h2></div><div><p>I enjoy talking about architecture, software delivery, and how AI changes the way we work. If those are questions you're exploring too, let's connect.</p><div class="actions"><a class="button" href="https://www.linkedin.com/in/andrevianna/">Let's talk on LinkedIn <span class="arrow" aria-hidden="true">↗</span></a><a class="external" href="https://github.com/AndreVianna">GitHub <span aria-hidden="true">↗</span></a></div><p class="business">For business services, visit <a href="https://casuloailabs.com/">Casulo AI Labs ↗</a>.</p></div></section>
+    </main>
+    <footer class="footer"><p>© 2026 Andre Vianna · Personal site</p></footer>
+  </div>
 </body>
 </html>

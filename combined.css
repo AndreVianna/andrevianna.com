@@ -1,0 +1,28 @@
+/* Color-only adaptation. Layout and typography are inherited from systems.css. */
+:root {
+  --bg: #1c1b22;
+  --panel: #24232b;
+  --panel2: #2b2530;
+  --text: #e2dbd1;
+  --muted: #b1aaa9;
+  --accent: #d4a58c;
+  --line: #80717b;
+  --diagram-grid: #5d505f;
+  --diagram-border: #aa8e9c;
+}
+
+.button:hover { background: #e0bca6; color: var(--bg); }
+.project-visual::before {
+  background-image: linear-gradient(#d4a58c10 1px, transparent 1px), linear-gradient(90deg, #d4a58c10 1px, transparent 1px);
+}
+.project-visual.toolbox { background: #222e30; }
+.project-visual.toolbox strong { color: #b7cebd; }
+
+/* Recolor existing SVG presentation attributes without changing the drawing. */
+.architecture-svg [stroke="#3d555b"] { stroke: var(--diagram-grid); }
+.architecture-svg [stroke="#9fd7c4"] { stroke: var(--accent); }
+.architecture-svg [stroke="#6d9694"] { stroke: var(--diagram-border); }
+.architecture-svg [fill="#20323a"] { fill: var(--panel2); }
+.architecture-svg [fill="#aabbb9"] { fill: var(--muted); }
+.architecture-svg [fill="#dce4df"] { fill: var(--text); }
+.architecture-svg [fill="#9fd7c4"] { fill: var(--accent); }
